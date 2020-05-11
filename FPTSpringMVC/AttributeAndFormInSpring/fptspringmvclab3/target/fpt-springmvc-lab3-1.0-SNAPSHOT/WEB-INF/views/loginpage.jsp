@@ -12,7 +12,7 @@
     <title>Login</title>
 </head>
 <body>
-
+    ${mess}
     <%--@elvariable id="student" type="com.huyhuynh.models"--%>
     <form:form action="/login" modelAttribute="student">
         <div>ID: </div>

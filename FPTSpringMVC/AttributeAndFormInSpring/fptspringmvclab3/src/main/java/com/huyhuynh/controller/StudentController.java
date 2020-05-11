@@ -28,12 +28,17 @@ public class StudentController {
 
     //Xử lí action login
     @RequestMapping("/login")
-    public String checkLogin(@ModelAttribute("student")Student student){
-        student.setName("Huỳnh Bảo Huy");
-        student.setAge(22);
-        student.setMajor("CNTT");
-        student.setLevel(new Level("3","Bí Thư"));
-        return "/studentpage";
+    public String checkLogin(@ModelAttribute("student")Student student, ModelMap modelMap){
+        if (student.getUser().equals("huy")&&student.getPass().equals("123")) {
+            student.setName("Huỳnh Bảo Huy");
+            student.setAge(22);
+            student.setMajor("CNTT");
+            student.setLevel("3");
+            return "/studentpage";
+        } else {
+            modelMap.addAttribute("mess","Đăng nhập thất bại");
+            return "/loginpage";
+        }
     }
 
 

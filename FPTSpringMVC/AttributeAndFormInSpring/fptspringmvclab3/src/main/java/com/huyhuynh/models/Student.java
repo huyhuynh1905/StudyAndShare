@@ -10,12 +10,12 @@ public class Student {
     private String name;
     private int age;
     private String major;
-    private Level level;
+    private String level;
 
     public Student() {
     }
 
-    public Student(String user, String pass, String name, int age, String major, Level level) {
+    public Student(String user, String pass, String name, int age, String major, String level) {
         this.user = user;
         this.pass = pass;
         this.name = name;
@@ -64,11 +64,11 @@ public class Student {
         this.major = major;
     }
 
-    public Level getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 }

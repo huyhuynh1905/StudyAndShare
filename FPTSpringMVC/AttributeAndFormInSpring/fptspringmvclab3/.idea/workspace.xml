@@ -42,8 +42,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RunDashboard">
@@ -144,7 +144,7 @@
       <updated>1589128057542</updated>
       <workItem from="1589128060461" duration="633000" />
       <workItem from="1589202046329" duration="4605000" />
-      <workItem from="1589206695028" duration="5871000" />
+      <workItem from="1589206695028" duration="12226000" />
     </task>
     <servers />
   </component>

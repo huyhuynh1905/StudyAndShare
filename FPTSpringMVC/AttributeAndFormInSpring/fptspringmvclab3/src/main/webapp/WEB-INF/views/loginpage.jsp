@@ -12,7 +12,6 @@
     <title>Login</title>
 </head>
 <body>
-
     <%--@elvariable id="student" type="com.huyhuynh.models"--%>
     <form:form action="/login" modelAttribute="student">
         <div>ID: </div>
