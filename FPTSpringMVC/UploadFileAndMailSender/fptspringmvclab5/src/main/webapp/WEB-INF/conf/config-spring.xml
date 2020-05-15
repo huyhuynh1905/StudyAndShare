@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.huyhuynh.controller,com.huyhuynh.components"/>
+    <mvc:annotation-driven/>
+    <beans>
+        <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="suffix" value=".jsp"/>
+            <property name="prefix" value="/WEB-INF/views"/>
+        </bean>
+        <!--Cấu hình bean cho một class-->
+        <bean id="companyKMA" class="com.huyhuynh.models.Company">
+            <property name="name" value="KMA Huy"/>
+            <property name="slogan" value="Spring MVC"/>
+        </bean>
+        <bean id="companyFPT" class="com.huyhuynh.models.Company">
+            <property name="name" value="FPT Spring"/>
+            <property name="slogan" value="FPT Spring MVC"/>
+        </bean>
+        <bean id="companyLab" class="com.huyhuynh.models.Company">
+            <property name="name" value="Spring Lab 5"/>
+            <property name="slogan" value="Spring MVC Lab 5"/>
+        </bean>
+        <!--Bean upoadfile-->
+        <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+            <property name="maxUploadSize" value="20971520"/>
+        </bean>
+    </beans>
+</beans>
