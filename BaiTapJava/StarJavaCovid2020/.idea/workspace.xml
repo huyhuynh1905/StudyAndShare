@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2dd7925c-8f0f-464d-8051-5e1ec335e248" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZQrzFc6dyV1IyB4HFoXYeCdqcj" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Bai8RutTien">
+    <configuration name="Bai4PhuongTrinhBac2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chamcode.net.baitapveifelse.Bai4PhuongTrinhBac2" />
+      <module name="StarJavaCovid2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chamcode.net.baitapveifelse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bai5TamGiac" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chamcode.net.baitapveifelse.Bai5TamGiac" />
+      <module name="StarJavaCovid2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chamcode.net.baitapveifelse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bai6SoNgayCuaThang" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chamcode.net.baitapveifelse.Bai6SoNgayCuaThang" />
+      <module name="StarJavaCovid2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chamcode.net.baitapveifelse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bai7CuocDienThoai" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chamcode.net.baitapveifelse.Bai7CuocDienThoai" />
+      <module name="StarJavaCovid2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chamcode.net.baitapveifelse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bai8RutTien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="chamcode.net.baitapveifelse.Bai8RutTien" />
+      <module name="StarJavaCovid2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="chamcode.net.baitapveifelse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Bai8RutTien" />
+        <item itemvalue="Application.Bai7CuocDienThoai" />
+        <item itemvalue="Application.Bai6SoNgayCuaThang" />
+        <item itemvalue="Application.Bai5TamGiac" />
+        <item itemvalue="Application.Bai4PhuongTrinhBac2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2dd7925c-8f0f-464d-8051-5e1ec335e248" name="Default Changelist" comment="" />
+      <created>1584782419578</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584782419578</updated>
+      <workItem from="1584782421062" duration="6617000" />
+      <workItem from="1588701972962" duration="1148000" />
+      <workItem from="1588838594390" duration="17000" />
+      <workItem from="1588838624276" duration="11000" />
+      <workItem from="1588844829232" duration="88000" />
+      <workItem from="1589272105727" duration="5944000" />
+      <workItem from="1589429501996" duration="1226000" />
+      <workItem from="1589444145391" duration="3789000" />
+      <workItem from="1589531343949" duration="3862000" />
+      <workItem from="1589549907985" duration="127000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
