@@ -6,3 +6,4 @@
 3. [ModelAttribute và điều khiển trong Form](https://github.com/huyhuynh1905/StudyAndShare/tree/master/FPTSpringMVC/AttributeAndFormInSpring)
 4. [EL & JSTL trong Spring](https://github.com/huyhuynh1905/StudyAndShare/tree/master/FPTSpringMVC/ELandJSTL)
 5. [Upload File và Dependence Injection trong Spring MVC](https://github.com/huyhuynh1905/StudyAndShare/tree/master/FPTSpringMVC/UploadFileAndDI)
+6. [Gửi Mail trong Spring MVC](https://github.com/huyhuynh1905/StudyAndShare/tree/master/FPTSpringMVC/SendMailInSpring)
