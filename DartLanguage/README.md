@@ -5,3 +5,4 @@
 3. [Toán tử trong Dart](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DartLanguage/ToanTuTrongDart)
 4. [Câu lệnh điều kiện và vòng lặp trong Dart](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DartLanguage/DieuKienVaVongLap)
 5. [Function trong Dart](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DartLanguage/FunctionTrongDart)
+6. [Class trong Dart](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DartLanguage/ClassTrongDart)
