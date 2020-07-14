@@ -3,6 +3,8 @@
 
 ### Danh sách các bài:
 1. [SQLite trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/SQLiteTrongAndroid)
+2. [Broadcast Receiver](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/Broadcast-Receiver)
+
 
 
 
