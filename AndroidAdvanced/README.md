@@ -2,9 +2,11 @@
 > Seri thực hiện bằng IDE IntelliJ
 
 ### Danh sách các bài:
-1. [SQLite trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/SQLiteTrongAndroid)
-2. [Broadcast Receiver](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/Broadcast-Receiver)
-3. [Service Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/Service-Android)
+1. [Shared Preferences trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/SharedPreferences)
+2. [Internal Storage và External Storage trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/InternalStorageAndExternalStorage)
+3. [SQLite trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/SQLiteTrongAndroid)
+4. [Broadcast Receiver](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/Broadcast-Receiver)
+5. [Service Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/Service-Android)
 
 
 
