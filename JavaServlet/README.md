@@ -2,4 +2,5 @@
 > Seri thực hiện bằng IDE IntelliJ
 
 ### Danh sách các bài:
-1. [Bắt đầu với Spring MVC](https://github.com/huyhuynh1905/StudyAndShare/tree/master/JavaServlet/BatDauVoiServlet)
+1. [Bắt đầu với Servlet](https://github.com/huyhuynh1905/StudyAndShare/tree/master/JavaServlet/BatDauVoiServlet)
+2. [Thiết kế cấu trúc trong Project Servlet](https://github.com/huyhuynh1905/StudyAndShare/tree/master/JavaServlet/ThietKeCauTruc)
