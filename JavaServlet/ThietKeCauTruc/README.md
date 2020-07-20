@@ -89,7 +89,7 @@
 <a name="muc4"></a>
 ## 4. Các module-core khác:
 - Các module khác cần được tạo để chia dự án:
-<div align="center"><img  src="https://i.imgur.com/CbsZvPn.png"/></div>
+<div align="center"><img  src="https://i.imgur.com/o5JYk9A.png"/></div>
 
 - Trong các module này tất cả trong file `pom.xml` đều phải khai báo `<relativePath>../pom.xml</relativePath>` đến `pom.xml` của module cha.
 - Sau khi tạo xong các module trên thì chạy clean maven để hoàn tất các bước căn bản của một project servlet. Dùng lệnh `mvn clean install` hoặc kick phải file pom -> maven -> **Reimport**
