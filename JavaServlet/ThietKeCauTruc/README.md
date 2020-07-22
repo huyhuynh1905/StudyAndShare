@@ -97,3 +97,5 @@
 
 - Chi tiết từng phần được nói rõ ở đây: 
 
+	+ Module **core-common**: Chứa tất cả các class, phương thức dùng chung cho toàn bộ hệ thống.
+	+ Module **core-persistence-data**: Chứa tất cả các Entity (java bean) của các bảng của CSDL, trong CSDL có bao nhiêu bảng thì phải có bấy nhiêu lớp Entity.
