@@ -99,3 +99,7 @@
 
 	+ Module **core-common**: Chứa tất cả các class, phương thức dùng chung cho toàn bộ hệ thống.
 	+ Module **core-persistence-data**: Chứa tất cả các Entity (java bean) của các bảng của CSDL, trong CSDL có bao nhiêu bảng thì phải có bấy nhiêu lớp Entity.
+	+ Module **core-data**: Chứa các API đọc đến CSDL như các API về findAll() hay upDate().
+	+ Module **core-dao**: Chứa các interface chức năng của các class entity
+	+ Module **core-dao-impl**:  Chứa các class triển khai implement các interface từ core-dao.
+	+ Module **core-dto**: dto là trung gian để hiển thị dữ liệu lên view. dto sẽ nhận dữ liệu từ entity thông qua service

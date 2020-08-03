@@ -62,14 +62,17 @@
 - Trong module **core-common** chứa các class dùng chung cho toàn bộ hệ thống nên ta sẽ tạo một package **.core.common.utils** chứa các tiện ích dùng chung cho hệ thống. Class kết nối với file `hibernate.cfg.xml` cũng được chứa trong package này.
 - Tạo một class `HibernateUtil` để tạo ra đối tượng SessionFactory làm việc với CSDL 
 
-<div align="center"><img  src="https://i.imgur.com/yIiYTKD.png"/></div>
+<div align="center"><img  src="https://i.imgur.com/R9WZDZB.png"/></div>
 
 > Class này trả về cho ta một đối tượng SessionFactory thông qua duy nhất phương thức getSessionFactory().
+> Link tham khảo về Hibernate 5 ([Link](https://dzone.com/articles/hibernate-5-xml-configuration-example)).
+
 
 
 <a name="muc4"></a>
 ## 4. Tạo các Entity của bảng dữ liệu.
 - Trong module **core-persistence-data** sẽ chứa các Entity đại diện của các bảng trong đối tượng - ở CSDL có bao nhiêu bảng thì ở đây có bấy nhiêu class Entity, ví dụ ở đây ta tạo 2 entity *User* và *Role* đại diện cho 2 bảng trên CSDL:
+> Cái này mình hơi sai, nên đặt tên ở đây là *UserEntity* và *RoleEntity*, các class trong này cũng nên thêm hậu tố **Entity** vào tên class để phân biệt.
 
 <div align="center"><img  src="https://i.imgur.com/TAAtEQ1.png"/></div>
 
