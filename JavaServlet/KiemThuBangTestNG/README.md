@@ -10,7 +10,9 @@
 	</dependency>
 	```
 - Ta có một phương thức lấy ra danh sách của một Entity, ta cần test xem phương thức có chạy được không:
-<div align="center"><img  src="https://i.imgur.com/bWDh3kK.png"/></div>
+<div align="center"><img  src="https://i.imgur.com/Zxk5r3c.png"/></div>
+
+> Chú ý:  Mỗi phương thức ta nên tạo mới một Session chứ không nên dùng Session Global. Ta sẽ đóng các Session này ở *finally()* để tránh lỗi khi gọi một session khác.
 
 - Ta tạo thêm một module chuyên dùng chỉ để test:
 <div align="center"><img  src="https://i.imgur.com/5Ryxkwn.png"/></div>
