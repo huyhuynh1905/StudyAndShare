@@ -4,11 +4,11 @@
 1. [***Thẻ Shape (Hình Dạng).***](#muc1) 
 2. [***Thẻ Selector***](#muc2)
 3. [***Animation***](#muc3)
-	3.1. [*Animation Alpha*](#muc31)
-	3.2. [*Animation Rotate*](#muc32)
-	3.3. [*Animation Scale*](#muc33)
-	3.4. [*Animation Translate*](#muc34)
-	3.5. [*Sử dụng animation trong chuyển intent hoặc trong listview*](#muc35)
+3.1. [*Animation Alpha*](#muc31)
+3.2. [*Animation Rotate*](#muc32)
+3.3. [*Animation Scale*](#muc33)
+3.4. [*Animation Translate*](#muc34)
+3.5. [*Sử dụng animation trong chuyển intent hoặc trong listview*](#muc35)
 
 <a name="muc1"></a>
 ## 1. Thẻ Shape (Hình Dạng).
