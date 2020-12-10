@@ -4,6 +4,7 @@
 1. [***Thẻ Shape (Hình Dạng).***](#muc1) 
 2. [***Thẻ Selector***](#muc2)
 3. [***Animation***](#muc3)
+
 3.1. [*Animation Alpha*](#muc31)
 3.2. [*Animation Rotate*](#muc32)
 3.3. [*Animation Scale*](#muc33)
