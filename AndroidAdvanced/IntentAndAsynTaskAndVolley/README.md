@@ -75,35 +75,35 @@ Ta có thể tạo một class con trong class chính thực hiện các thao t�
 private class ReadJSON extends AsyncTask<String, Void, String>{  
   
     @Override  
-	protected String doInBackground(String... strings) {  
-        //Code chạy lấy về từ string  
-		String urlStr = strings[0]; //Đường dẫn truyền vào  
-		StringBuilder strReturn = new StringBuilder();  
-		try {  
-            URL url = new URL(urlStr);  
-			InputStreamReader inputStreamReader = new InputStreamReader(url.openConnection().getInputStream());  
-			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);  
-			//Đọc dòng dữ liệu nhận được  
-			String line = "";  
-			while ((line=bufferedReader.readLine())!=null){  
-                strReturn.append(line);  
-			 }  
-            bufferedReader.close();  
-			inputStreamReader.close();  
-		  } catch (MalformedURLException e) {  
-            e.printStackTrace();  
-		  } catch (IOException e) {  
-            e.printStackTrace();  
-		  }  
+    protected String doInBackground(String... strings) {  
+    	//Code chạy lấy về từ string  
+	String urlStr = strings[0]; //Đường dẫn truyền vào  
+	StringBuilder strReturn = new StringBuilder();  
+	try {  
+		URL url = new URL(urlStr);  
+		InputStreamReader inputStreamReader = new InputStreamReader(url.openConnection().getInputStream());  
+		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);  
+		//Đọc dòng dữ liệu nhận được  
+		String line = "";  
+		while ((line=bufferedReader.readLine())!=null){  
+               		strReturn.append(line);  
+		}  
+            	bufferedReader.close();  
+		inputStreamReader.close();  
+	} catch (MalformedURLException e) {  
+            	e.printStackTrace();  
+	} catch (IOException e) {  
+            	e.printStackTrace();  
+	}  
   
         return strReturn.toString();  
-	  }  
+}  
   
-	    @Override  
-		protected void onPostExecute(String s) {  
-	        //Code xử lí sau khi nhận được json  
-			super.onPostExecute(s);  
-		}  
+	@Override  
+	protected void onPostExecute(String s) {  
+	    	//Code xử lí sau khi nhận được json  
+		super.onPostExecute(s);  
+	}  
 }
 ```
 
@@ -117,7 +117,7 @@ private class ReadJSON extends AsyncTask<String, Void, String>{
 //Đối với mảng JSON và cách duyệt như mảng bình thường
 	JSONArray jsonArray = new JSONArray(s);  
 	for (int i = 0; i<jsonArray.length();i++){  
-	    JSONObject object = jsonArray.getJSONObject(i);  
+	    	JSONObject object = jsonArray.getJSONObject(i);  
 		String data = object.getString("<key>");  
 	}
 ```
@@ -138,16 +138,16 @@ dependencies {
 RequestQueue requestQueue = Volley.newRequestQueue(this);  
 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "url", null,  
 		 new Response.Listener<JSONObject>() {  
-            @Override  
+           		@Override  
 			public void onResponse(JSONObject response) {  
-                //Xử lí trả về  
+                		//Xử lí trả về  
 			}  
-        }, new Response.ErrorListener() {  
-            @Override  
+        	}, new Response.ErrorListener() {  
+            		@Override  
 			public void onErrorResponse(VolleyError error) {  
-                //Xử lí thông báo ra lỗi  
+                		//Xử lí thông báo ra lỗi  
 			}  
-        });  
+        	});  
 //chạy  
 requestQueue.add(jsonObjectRequest);
 ```
