@@ -9,7 +9,7 @@
 3.3. [*Animation Scale*](#muc33)
 3.4. [*Animation Translate*](#muc34)
 3.5. [*Sử dụng animation trong chuyển intent hoặc trong listview*](#muc35)
-
+4. [***Thẻ Ripple cho button.***](#muc4)
 <a name="muc1"></a>
 ## 1. Thẻ Shape (Hình Dạng).
 Cấu trúc của thẻ `<shape>` được ví dụ như sau:
@@ -165,3 +165,24 @@ btnNext.setOnClickListener(new View.OnClickListener() {
 - Trong listview gán animation bằng cách thêm animation cuối và gán cho view như:
 
 <div align="center"><img  src="https://i.imgur.com/5csLmX9.png"/></div>
+
+
+<a name="muc4"></a>
+## 4. Thẻ Ripple cho button.
+Thẻ ripple tương tự như thẻ selector nhưng mà cấu hình tổng hợp dễ dàng hơn. (Thẻ ripple chỉ dùng được từ APIv21 ~ android 5).
+- Đoạn xml cấu hình thẻ ripple:
+```xml
+<?xml version="1.0" encoding="utf-8"?>  
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"  
+  android:color="#CCC26F">  
+  
+ <item> 
+	 <shape> 
+		 <solid android:color="#FFC107"/>  
+		 <size android:width="190dp"  
+		  android:height="50dp"/>  
+		 <corners android:radius="10dp"/>  
+	 </shape> 
+ </item>
+ </ripple>
+```
