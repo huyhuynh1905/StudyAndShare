@@ -120,5 +120,16 @@ public class MainActivity extends AppCompatActivity {
 
 > Trong đó thuộc tính `.setCustomAnimations(R.anim.anim_right_in,R.anim.anim_right_out,R.anim.anim_left_in,R.anim.anim_left_out)` được thêm ngay sau `beginTransaction()` đùng để tạo animation giữa lúc chuyển fragment.
 
+> Giữa các Fragment và Activity chỉ dùng Bundle để truyền các dữ liệu. 
+```java
+//send data
+Bundle bundle = new Bundle();
+bundl.put<Type>("<key>", <value>);
+fragment.setArguments(bundle );
+
+//nhận data
+Bundle bundle=getArguments(); 
+```
+
 > Tham khảo thêm:
 > - Từ khoá: "send data fragment", "fragment remove", "fragment pop back stack".
