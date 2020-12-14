@@ -58,56 +58,56 @@ implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 Vì như một List hiển thị nên sẽ có một Adapter để làm việc với Recyvleview và đối tượng. Mình sẽ tạo một class `UserAdapter.java` kế thừa từ `RecyclerView.Adapter<class Holder>` - Truyền vào một class Holder của chính cái view xml của từng item, mình tạo bằng cách tạo class này như một class con trong chính Adapter này:
 ```java
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {  
-  
-    private Context context;  
-	private List<User> listUsers;  
-  
-	public UserAdapter(Context context) {  
-		this.context = context;;  
-	}  
-  
-    public void setData(List<User> listUsers) {  
-        this.listUsers = listUsers;  
-		notifyDataSetChanged();  
-  }  
-  
-    @NonNull  
-	@Override  
-	public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {  
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user,parent,false);  
-		return new UserViewHolder(view);  
-	}  
-  
-    @Override  
-	public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {  
-        User user = listUsers.get(position);  
-		if (user==null){  
-		            return;  
-		}  
-        holder.txtName.setText(user.getName());  
-		holder.imgAvt.setImageResource(user.getAvatar());  
-	 }  
-  
-    @Override  
-	public int getItemCount() {  
-        if (listUsers!=null){  
-            return listUsers.size();  
-		}  
-	        return 0;  
-	 }  
-  
-    //Class ViewHolder  
-	public class UserViewHolder extends RecyclerView.ViewHolder {  
-        private TextView txtName;  
-		private ImageView imgAvt;  
-  
-		public UserViewHolder(@NonNull View itemView) {  
-            super(itemView);  
-			txtName = itemView.findViewById(R.id.txtName);  
-			imgAvt = itemView.findViewById(R.id.imgAvt);  
-		}  
-    }  
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
+
+    private Context context;
+    private List<User> listUsers;
+
+    public UserAdapter(Context context) {
+        this.context = context;;
+    }
+
+    public void setData(List<User> listUsers) {
+        this.listUsers = listUsers;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user,parent,false);
+        return new UserViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+        User user = listUsers.get(position);
+        if (user==null){
+            return;
+        }
+        holder.txtName.setText(user.getName());
+        holder.imgAvt.setImageResource(user.getAvatar());
+    }
+
+    @Override
+    public int getItemCount() {
+        if (listUsers!=null){
+            return listUsers.size();
+        }
+        return 0;
+    }
+
+    //Class ViewHolder
+    public class UserViewHolder extends RecyclerView.ViewHolder {
+        private TextView txtName;
+        private ImageView imgAvt;
+
+        public UserViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtName = itemView.findViewById(R.id.txtName);
+            imgAvt = itemView.findViewById(R.id.imgAvt);
+        }
+    }
 }
 ```
 
@@ -225,23 +225,23 @@ Tiếp tục thêm một file `item_categry.xml` để hiển thị một dòng 
 
 Vì có 2 dạng đối tượng hiển thị nên ta sẽ tạo ra 2 class `Book.java` và `Categry.java` (Categry sẽ có một thuộc tính là List\<Book> chứa danh sách book). Tiếp đó sẽ tạo ra các Adapter của mỗi class trên.
 ```java
-@Override  
-public void onBindViewHolder(@NonNull CategryViewholder holder, int position) {  
-  Categry categry = categryList.get(position);  
-  if (categry==null){  
-	return;  
-  }  
-  
-    holder.txtNameCategry.setText(categry.getNameCategry());  
-  
-  //Xử lí RecycleView của Book lồng trong này:  
-  LinearLayoutManager layoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);  
-  holder.recyclerViewBook.setLayoutManager(layoutManager);  
-  
-  BookAdapter bookAdapter = new BookAdapter();  
-  bookAdapter.setDataBook(categry.getBookList());  
-  holder.recyclerViewBook.setAdapter(bookAdapter);  
-}
+@Override
+    public void onBindViewHolder(@NonNull CategryViewholder holder, int position) {
+        Categry categry = categryList.get(position);
+        if (categry==null){
+            return;
+        }
+
+        holder.txtNameCategry.setText(categry.getNameCategry());
+
+        //Xử lí RecycleView của Book lồng trong này:
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
+        holder.recyclerViewBook.setLayoutManager(layoutManager);
+
+        BookAdapter bookAdapter = new BookAdapter();
+        bookAdapter.setDataBook(categry.getBookList());
+        holder.recyclerViewBook.setAdapter(bookAdapter);
+    }
 ```
 
 > Vì `CategryAdapter.java` có chứa một trường RecyvleView dạng Horizontal nên code sẽ khác ở trong phương thức `onBindViewHolder()`
@@ -261,28 +261,29 @@ Ta sẽ tạo một class `MultiUser.java` để hiển thị lên item, trong �
 
 Chúng ta vẫn sẽ tạo ra một class `MultiUserAdapter.java` để hiển thị ra. Trong chính class này phải tạo ra **2 class con chứa trong nó** đại diện cho 2 kiểu hiển thị để ánh xạ cho từng item hiển thị:
 ```java
-public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{  
-  
-    TextView tvNameFeature;  
-	ImageView imgFeature;  
-	public MultiUserFeatureHolder(@NonNull View itemView) {  
-	  super(itemView);  
-	  tvNameFeature = itemView.findViewById(R.id.tv_feature);  
-	  imgFeature = itemView.findViewById(R.id.img_feature);  
-	}  
-}  
-  
-public class MultiUserNormalHolder extends RecyclerView.ViewHolder{  
-  
-    TextView tvNameNormal;  
-	ImageView imgNormal;  
-	public MultiUserNormalHolder(@NonNull View itemView) {  
-	  super(itemView);  
-	  
-	  tvNameNormal = itemView.findViewById(R.id.tv_normal);  
-	  imgNormal = itemView.findViewById(R.id.img_normal);  
-	}  
-}
+//Tạo ra các class
+    public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{
+
+        TextView tvNameFeature;
+        ImageView imgFeature;
+        public MultiUserFeatureHolder(@NonNull View itemView) {
+            super(itemView);
+            tvNameFeature = itemView.findViewById(R.id.tv_feature);
+            imgFeature = itemView.findViewById(R.id.img_feature);
+        }
+    }
+
+    public class MultiUserNormalHolder extends RecyclerView.ViewHolder{
+
+        TextView tvNameNormal;
+        ImageView imgNormal;
+        public MultiUserNormalHolder(@NonNull View itemView) {
+            super(itemView);
+
+            tvNameNormal = itemView.findViewById(R.id.tv_normal);
+            imgNormal = itemView.findViewById(R.id.img_normal);
+        }
+    }
 ``` 
 
 > Vì có 2 class ViewHolder cho mỗi loại nên class `MultiUserAdapter` sẽ kế thừa RecycleView.Adapter có generic truyền vào là RecyclerView.ViewHolder như sau:
@@ -293,89 +294,89 @@ class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 Tất cả các phương thức Override lại ta sẽ viết khác so với những phần trước, ngoài ra ta còn phải Override thêm phương thức `getItemViewType()` để xác định loại type. Full code class `MultiUserAdapter` như sau:
 
 ```java
-public class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {  
-  
-    private static final int TYPE_FEATURE = 1;  
-	private static final int TYPE_NORMAL = 2;  
-	private List<MultiUser> multiUsers;  
-  
-	public void setMultiUsers(List<MultiUser> multiUsers) {  
-	  this.multiUsers = multiUsers;  
-	  notifyDataSetChanged();  
-	}  
-  
-    @NonNull  
-	@Override  
-	public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {  
-        if (TYPE_FEATURE==viewType){  
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_feature,parent,false);  
-			return new MultiUserFeatureHolder(view);  
-		} else if (TYPE_NORMAL==viewType){  
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_normal,parent,false);  
-			return new MultiUserNormalHolder(view);  
-		}  
-        return null;  
-	}  
-  
-    @Override  
-	public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {  
-        MultiUser user = multiUsers.get(position);  
-		if (user==null){  
-			return;  
-		}  
-        if (TYPE_FEATURE==holder.getItemViewType()){  
-            MultiUserFeatureHolder multiUserFeatureHolder = (MultiUserFeatureHolder) holder;  
-			multiUserFeatureHolder.imgFeature.setImageResource(user.getResoureImg());  
-			multiUserFeatureHolder.tvNameFeature.setText(user.getName());  
-		} else if (TYPE_NORMAL==holder.getItemViewType()){  
-            MultiUserNormalHolder multiUserNormalHolder = (MultiUserNormalHolder) holder;  
-			multiUserNormalHolder.imgNormal.setImageResource(user.getResoureImg());  
-			multiUserNormalHolder.tvNameNormal.setText(user.getName());  
-		}  
-    }  
-  
-    @Override  
-	public int getItemCount() {  
-        if (multiUsers!=null){  
-            return multiUsers.size();  
-		}  
-        return 0;  
-	}  
-  
-    //Xác định loại type  
-	@Override  
-	public int getItemViewType(int position) {  
-        MultiUser multiUser = multiUsers.get(position);  
-		if (multiUser.isFeature()){  
-            return TYPE_FEATURE;  
-		} else {  
-            return TYPE_NORMAL;  
-		}  
-	  }  
-  
-    //Tạo ra các class  
-  public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{  
-  
-        TextView tvNameFeature;  
-		ImageView imgFeature;  
-		public MultiUserFeatureHolder(@NonNull View itemView) {  
-            super(itemView);  
-			tvNameFeature = itemView.findViewById(R.id.tv_feature);  
-			imgFeature = itemView.findViewById(R.id.img_feature);  
-		}  
-    }  
-  
-    public class MultiUserNormalHolder extends RecyclerView.ViewHolder{  
-  
-        TextView tvNameNormal;  
-		ImageView imgNormal;  
-		public MultiUserNormalHolder(@NonNull View itemView) {  
-            super(itemView);  
-  
-			tvNameNormal = itemView.findViewById(R.id.tv_normal);  
-			imgNormal = itemView.findViewById(R.id.img_normal);  
-		}  
-    }  
+public class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private static final int TYPE_FEATURE = 1;
+    private static final int TYPE_NORMAL = 2;
+    private List<MultiUser> multiUsers;
+
+    public void setMultiUsers(List<MultiUser> multiUsers) {
+        this.multiUsers = multiUsers;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (TYPE_FEATURE==viewType){
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_feature,parent,false);
+            return new MultiUserFeatureHolder(view);
+        } else if (TYPE_NORMAL==viewType){
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_normal,parent,false);
+            return new MultiUserNormalHolder(view);
+        }
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        MultiUser user = multiUsers.get(position);
+        if (user==null){
+            return;
+        }
+        if (TYPE_FEATURE==holder.getItemViewType()){
+            MultiUserFeatureHolder multiUserFeatureHolder = (MultiUserFeatureHolder) holder;
+            multiUserFeatureHolder.imgFeature.setImageResource(user.getResoureImg());
+            multiUserFeatureHolder.tvNameFeature.setText(user.getName());
+        } else if (TYPE_NORMAL==holder.getItemViewType()){
+            MultiUserNormalHolder multiUserNormalHolder = (MultiUserNormalHolder) holder;
+            multiUserNormalHolder.imgNormal.setImageResource(user.getResoureImg());
+            multiUserNormalHolder.tvNameNormal.setText(user.getName());
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        if (multiUsers!=null){
+            return multiUsers.size();
+        }
+        return 0;
+    }
+
+    //Xác định loại type
+    @Override
+    public int getItemViewType(int position) {
+        MultiUser multiUser = multiUsers.get(position);
+        if (multiUser.isFeature()){
+            return TYPE_FEATURE;
+        } else {
+            return TYPE_NORMAL;
+        }
+    }
+
+    //Tạo ra các class
+    public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{
+
+        TextView tvNameFeature;
+        ImageView imgFeature;
+        public MultiUserFeatureHolder(@NonNull View itemView) {
+            super(itemView);
+            tvNameFeature = itemView.findViewById(R.id.tv_feature);
+            imgFeature = itemView.findViewById(R.id.img_feature);
+        }
+    }
+
+    public class MultiUserNormalHolder extends RecyclerView.ViewHolder{
+
+        TextView tvNameNormal;
+        ImageView imgNormal;
+        public MultiUserNormalHolder(@NonNull View itemView) {
+            super(itemView);
+
+            tvNameNormal = itemView.findViewById(R.id.tv_normal);
+            imgNormal = itemView.findViewById(R.id.img_normal);
+        }
+    }
 }
 ``` 
 
