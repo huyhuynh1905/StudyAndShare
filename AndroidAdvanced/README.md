@@ -1,5 +1,5 @@
 # Android Advanced
-> Seri thực hiện bằng IDE IntelliJ
+> Seri thực hiện bằng Android Studio 4.0.1
 
 ### Danh sách các bài:
 1. [Shared Preferences trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/SharedPreferences)
