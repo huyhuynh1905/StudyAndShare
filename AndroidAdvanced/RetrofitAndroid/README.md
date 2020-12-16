@@ -12,7 +12,8 @@ Chúng ta sẽ sử dụng 2 thư viện là [Retrofit 2]() (Để làm việc v
 implementation 'com.squareup.retrofit2:retrofit:_(insert latest version)_'
 implementation 'com.squareup.retrofit2:converter-gson:latest.version'
 ```
->Trong ví dụ này mình sẽ dùng version 2.1.0
+>Trong ví dụ này mình sẽ dùng version 2.4.0
+>Chú ý là nên dùng các phiên bản mới nhất để tránh lỗi về API
 
 Ngoài ra còn dùng thư viện [Glide](https://github.com/bumptech/glide) để load ảnh từ url và thư viện RecyvlevView để hiển thị danh sách:
 ```
