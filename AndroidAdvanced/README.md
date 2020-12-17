@@ -13,6 +13,7 @@
 9. [Fragment Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/FragmentAndroid)
 10. [RecycleView Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/RecycleviewAndroid)
 11. [Retrofit2 Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/RetrofitAndroid)
+12. [Đăng nhập bằng Facebook và Google Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced/LoginWithFbAndGoogle)
 
 
 
