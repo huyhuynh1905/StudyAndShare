@@ -91,3 +91,10 @@ map.put("key 2","value 2");
 
 Các medthod @POST đọc theo trang chủ của Retrofit.
 
+> Warring: Trong retrofit không có phương thức `@DELETE` truyền vào các `@Body`,.. Vậy nên để sử dụng thì phải tự định nghĩa một `HTTP` riêng cho mình như sau:
+```java
+@HTTP(method = "DELETE", path = "xoagiohang", hasBody = true)  
+Call<Map<String,Boolean>> xoaGioHang(@Body GioHang gioHang);
+ ```
+
+
