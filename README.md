@@ -7,3 +7,4 @@
 4. [Dart Language](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DartLanguage)
 5. [Java Servlet](https://github.com/huyhuynh1905/StudyAndShare/tree/master/JavaServlet)
 6. [Android nâng cao](https://github.com/huyhuynh1905/StudyAndShare/tree/master/AndroidAdvanced)
+7. [Thiết Kế Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/ThietKeTrongAndroid)
