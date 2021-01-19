@@ -382,3 +382,10 @@ public class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 > Trong method `onBindViewHolder()` và `onCreateViewHolder()` sẽ tuỳ thuộc vào giá trị của `getItemViewType()` trả về để có thể ánh xạ từng item cho từng kiểu view khác nhau.
 > Việc khai báo, ánh xạ và sử dụng bên `MainActivity` hoàn toàn giống như các phần trước, tuy nhiên `LinearLayoutManager layoutManager = new LinearLayoutManager(this);` chỉ cần truyền vào context mà không cần truyền các thuộc tính lướt ngang hoặc dọc.
+
+
+Note: Để tạo đường kẻ giữa các item thì ta có thể add vào recyvleview như sau:
+```java
+DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(<this/context>,layoutManager.<VERTICAL/HOZONTAL>);
+recyclerView.addItemDecoration(dividerItemDecoration);
+```
