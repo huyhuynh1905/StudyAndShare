@@ -1,8 +1,11 @@
 # Thiết Kế Trong Android
 
+### Danh sách các thư viện UI/UX trong Android đẹp:
+Tham khảo [thư viện UI/UX trong Android](https://github.com/wasabeef/awesome-android-ui).
+Tham khảo [danh sách thư viện Lottie Cho Android](https://github.com/airbnb/lottie-android) (Thư viện đưa các animation động đẹp [trang chủ cho android](http://airbnb.io/lottie/#/android) - Hoặc [tìm kiếm và tải các animation đẹp](https://lottiefiles.com/search?q=success&category=animations)).
+
 ### Danh sách các bài:
 1. [Image Slide Trong Android](https://github.com/huyhuynh1905/StudyAndShare/tree/master/ThietKeTrongAndroid/ImageSlideTrongAndroid)
-
 
 ### Một vài thư viện hay dùng trong android:
 Kho lưu trữ [maven của google](https://maven.google.com/web/index.html?) (Dùng tìm kiếm thư viện và xem phiên bản).
