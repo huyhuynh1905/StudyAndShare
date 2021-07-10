@@ -6,7 +6,7 @@
 
 <a name="muc1"></a>
 ## 1. Cài đặt MySQL.
-- Đầu tiên các bạn vào trang chủ của MySQL để download phần mềm cài đặt về máy ([Link Download]((https://dev.mysql.com/downloads/workbench/))) hoặc có thể tải bản [MySQL 8.0.20.0](https://actvneduvn-my.sharepoint.com/:u:/g/personal/at131217_actvn_edu_vn/EY_KaYdTrIhMug98-oDbtE8BDiY4WLeSi16xtAqnJRbe7A?e=qYAXon).
+- Đầu tiên các bạn vào trang chủ của MySQL để download phần mềm cài đặt về máy ([Link Download](https://dev.mysql.com/downloads/workbench/)) hoặc có thể tải bản [MySQL 8.0.20.0](https://actvneduvn-my.sharepoint.com/:u:/g/personal/at131217_actvn_edu_vn/EY_KaYdTrIhMug98-oDbtE8BDiY4WLeSi16xtAqnJRbe7A?e=qYAXon).
  <div align="center"><img  src="https://i.imgur.com/daIiqkC.png"/></div>
 
 - Khởi động phần mềm và tiến hành cài đặt:
