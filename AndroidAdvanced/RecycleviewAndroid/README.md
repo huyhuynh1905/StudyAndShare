@@ -5,6 +5,7 @@
 2. [***Các loại LayoutManager trong RecyleView.***](#muc2)
 3. [***Custom LinearLayoutManager Horizontal + Vertical.***](#muc3)
 4. [***Multi view type (Multi view holder).***](#muc4)
+5. [***Load More Trong Android (Kotlin).***](#muc5)
 
 
 <a name="muc1"></a>
@@ -58,56 +59,56 @@ implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 Vì như một List hiển thị nên sẽ có một Adapter để làm việc với Recyvleview và đối tượng. Mình sẽ tạo một class `UserAdapter.java` kế thừa từ `RecyclerView.Adapter<class Holder>` - Truyền vào một class Holder của chính cái view xml của từng item, mình tạo bằng cách tạo class này như một class con trong chính Adapter này:
 ```java
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
-
-    private Context context;
-    private List<User> listUsers;
-
-    public UserAdapter(Context context) {
-        this.context = context;;
-    }
-
-    public void setData(List<User> listUsers) {
-        this.listUsers = listUsers;
-        notifyDataSetChanged();
-    }
-
-    @NonNull
-    @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user,parent,false);
-        return new UserViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        User user = listUsers.get(position);
-        if (user==null){
-            return;
-        }
-        holder.txtName.setText(user.getName());
-        holder.imgAvt.setImageResource(user.getAvatar());
-    }
-
-    @Override
-    public int getItemCount() {
-        if (listUsers!=null){
-            return listUsers.size();
-        }
-        return 0;
-    }
-
-    //Class ViewHolder
-    public class UserViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtName;
-        private ImageView imgAvt;
-
-        public UserViewHolder(@NonNull View itemView) {
-            super(itemView);
-            txtName = itemView.findViewById(R.id.txtName);
-            imgAvt = itemView.findViewById(R.id.imgAvt);
-        }
-    }
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {  
+  
+    private Context context;  
+	private List<User> listUsers;  
+  
+	public UserAdapter(Context context) {  
+		this.context = context;;  
+	}  
+  
+    public void setData(List<User> listUsers) {  
+        this.listUsers = listUsers;  
+		notifyDataSetChanged();  
+  }  
+  
+    @NonNull  
+	@Override  
+	public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {  
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user,parent,false);  
+		return new UserViewHolder(view);  
+	}  
+  
+    @Override  
+	public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {  
+        User user = listUsers.get(position);  
+		if (user==null){  
+		            return;  
+		}  
+        holder.txtName.setText(user.getName());  
+		holder.imgAvt.setImageResource(user.getAvatar());  
+	 }  
+  
+    @Override  
+	public int getItemCount() {  
+        if (listUsers!=null){  
+            return listUsers.size();  
+		}  
+	        return 0;  
+	 }  
+  
+    //Class ViewHolder  
+	public class UserViewHolder extends RecyclerView.ViewHolder {  
+        private TextView txtName;  
+		private ImageView imgAvt;  
+  
+		public UserViewHolder(@NonNull View itemView) {  
+            super(itemView);  
+			txtName = itemView.findViewById(R.id.txtName);  
+			imgAvt = itemView.findViewById(R.id.imgAvt);  
+		}  
+    }  
 }
 ```
 
@@ -225,23 +226,23 @@ Tiếp tục thêm một file `item_categry.xml` để hiển thị một dòng 
 
 Vì có 2 dạng đối tượng hiển thị nên ta sẽ tạo ra 2 class `Book.java` và `Categry.java` (Categry sẽ có một thuộc tính là List\<Book> chứa danh sách book). Tiếp đó sẽ tạo ra các Adapter của mỗi class trên.
 ```java
-@Override
-    public void onBindViewHolder(@NonNull CategryViewholder holder, int position) {
-        Categry categry = categryList.get(position);
-        if (categry==null){
-            return;
-        }
-
-        holder.txtNameCategry.setText(categry.getNameCategry());
-
-        //Xử lí RecycleView của Book lồng trong này:
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
-        holder.recyclerViewBook.setLayoutManager(layoutManager);
-
-        BookAdapter bookAdapter = new BookAdapter();
-        bookAdapter.setDataBook(categry.getBookList());
-        holder.recyclerViewBook.setAdapter(bookAdapter);
-    }
+@Override  
+public void onBindViewHolder(@NonNull CategryViewholder holder, int position) {  
+  Categry categry = categryList.get(position);  
+  if (categry==null){  
+	return;  
+  }  
+  
+    holder.txtNameCategry.setText(categry.getNameCategry());  
+  
+  //Xử lí RecycleView của Book lồng trong này:  
+  LinearLayoutManager layoutManager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);  
+  holder.recyclerViewBook.setLayoutManager(layoutManager);  
+  
+  BookAdapter bookAdapter = new BookAdapter();  
+  bookAdapter.setDataBook(categry.getBookList());  
+  holder.recyclerViewBook.setAdapter(bookAdapter);  
+}
 ```
 
 > Vì `CategryAdapter.java` có chứa một trường RecyvleView dạng Horizontal nên code sẽ khác ở trong phương thức `onBindViewHolder()`
@@ -261,29 +262,28 @@ Ta sẽ tạo một class `MultiUser.java` để hiển thị lên item, trong �
 
 Chúng ta vẫn sẽ tạo ra một class `MultiUserAdapter.java` để hiển thị ra. Trong chính class này phải tạo ra **2 class con chứa trong nó** đại diện cho 2 kiểu hiển thị để ánh xạ cho từng item hiển thị:
 ```java
-//Tạo ra các class
-    public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{
-
-        TextView tvNameFeature;
-        ImageView imgFeature;
-        public MultiUserFeatureHolder(@NonNull View itemView) {
-            super(itemView);
-            tvNameFeature = itemView.findViewById(R.id.tv_feature);
-            imgFeature = itemView.findViewById(R.id.img_feature);
-        }
-    }
-
-    public class MultiUserNormalHolder extends RecyclerView.ViewHolder{
-
-        TextView tvNameNormal;
-        ImageView imgNormal;
-        public MultiUserNormalHolder(@NonNull View itemView) {
-            super(itemView);
-
-            tvNameNormal = itemView.findViewById(R.id.tv_normal);
-            imgNormal = itemView.findViewById(R.id.img_normal);
-        }
-    }
+public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{  
+  
+    TextView tvNameFeature;  
+	ImageView imgFeature;  
+	public MultiUserFeatureHolder(@NonNull View itemView) {  
+	  super(itemView);  
+	  tvNameFeature = itemView.findViewById(R.id.tv_feature);  
+	  imgFeature = itemView.findViewById(R.id.img_feature);  
+	}  
+}  
+  
+public class MultiUserNormalHolder extends RecyclerView.ViewHolder{  
+  
+    TextView tvNameNormal;  
+	ImageView imgNormal;  
+	public MultiUserNormalHolder(@NonNull View itemView) {  
+	  super(itemView);  
+	  
+	  tvNameNormal = itemView.findViewById(R.id.tv_normal);  
+	  imgNormal = itemView.findViewById(R.id.img_normal);  
+	}  
+}
 ``` 
 
 > Vì có 2 class ViewHolder cho mỗi loại nên class `MultiUserAdapter` sẽ kế thừa RecycleView.Adapter có generic truyền vào là RecyclerView.ViewHolder như sau:
@@ -294,89 +294,89 @@ class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 Tất cả các phương thức Override lại ta sẽ viết khác so với những phần trước, ngoài ra ta còn phải Override thêm phương thức `getItemViewType()` để xác định loại type. Full code class `MultiUserAdapter` như sau:
 
 ```java
-public class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-    private static final int TYPE_FEATURE = 1;
-    private static final int TYPE_NORMAL = 2;
-    private List<MultiUser> multiUsers;
-
-    public void setMultiUsers(List<MultiUser> multiUsers) {
-        this.multiUsers = multiUsers;
-        notifyDataSetChanged();
-    }
-
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (TYPE_FEATURE==viewType){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_feature,parent,false);
-            return new MultiUserFeatureHolder(view);
-        } else if (TYPE_NORMAL==viewType){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_normal,parent,false);
-            return new MultiUserNormalHolder(view);
-        }
-        return null;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MultiUser user = multiUsers.get(position);
-        if (user==null){
-            return;
-        }
-        if (TYPE_FEATURE==holder.getItemViewType()){
-            MultiUserFeatureHolder multiUserFeatureHolder = (MultiUserFeatureHolder) holder;
-            multiUserFeatureHolder.imgFeature.setImageResource(user.getResoureImg());
-            multiUserFeatureHolder.tvNameFeature.setText(user.getName());
-        } else if (TYPE_NORMAL==holder.getItemViewType()){
-            MultiUserNormalHolder multiUserNormalHolder = (MultiUserNormalHolder) holder;
-            multiUserNormalHolder.imgNormal.setImageResource(user.getResoureImg());
-            multiUserNormalHolder.tvNameNormal.setText(user.getName());
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        if (multiUsers!=null){
-            return multiUsers.size();
-        }
-        return 0;
-    }
-
-    //Xác định loại type
-    @Override
-    public int getItemViewType(int position) {
-        MultiUser multiUser = multiUsers.get(position);
-        if (multiUser.isFeature()){
-            return TYPE_FEATURE;
-        } else {
-            return TYPE_NORMAL;
-        }
-    }
-
-    //Tạo ra các class
-    public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{
-
-        TextView tvNameFeature;
-        ImageView imgFeature;
-        public MultiUserFeatureHolder(@NonNull View itemView) {
-            super(itemView);
-            tvNameFeature = itemView.findViewById(R.id.tv_feature);
-            imgFeature = itemView.findViewById(R.id.img_feature);
-        }
-    }
-
-    public class MultiUserNormalHolder extends RecyclerView.ViewHolder{
-
-        TextView tvNameNormal;
-        ImageView imgNormal;
-        public MultiUserNormalHolder(@NonNull View itemView) {
-            super(itemView);
-
-            tvNameNormal = itemView.findViewById(R.id.tv_normal);
-            imgNormal = itemView.findViewById(R.id.img_normal);
-        }
-    }
+public class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {  
+  
+    private static final int TYPE_FEATURE = 1;  
+	private static final int TYPE_NORMAL = 2;  
+	private List<MultiUser> multiUsers;  
+  
+	public void setMultiUsers(List<MultiUser> multiUsers) {  
+	  this.multiUsers = multiUsers;  
+	  notifyDataSetChanged();  
+	}  
+  
+    @NonNull  
+	@Override  
+	public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {  
+        if (TYPE_FEATURE==viewType){  
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_feature,parent,false);  
+			return new MultiUserFeatureHolder(view);  
+		} else if (TYPE_NORMAL==viewType){  
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_normal,parent,false);  
+			return new MultiUserNormalHolder(view);  
+		}  
+        return null;  
+	}  
+  
+    @Override  
+	public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {  
+        MultiUser user = multiUsers.get(position);  
+		if (user==null){  
+			return;  
+		}  
+        if (TYPE_FEATURE==holder.getItemViewType()){  
+            MultiUserFeatureHolder multiUserFeatureHolder = (MultiUserFeatureHolder) holder;  
+			multiUserFeatureHolder.imgFeature.setImageResource(user.getResoureImg());  
+			multiUserFeatureHolder.tvNameFeature.setText(user.getName());  
+		} else if (TYPE_NORMAL==holder.getItemViewType()){  
+            MultiUserNormalHolder multiUserNormalHolder = (MultiUserNormalHolder) holder;  
+			multiUserNormalHolder.imgNormal.setImageResource(user.getResoureImg());  
+			multiUserNormalHolder.tvNameNormal.setText(user.getName());  
+		}  
+    }  
+  
+    @Override  
+	public int getItemCount() {  
+        if (multiUsers!=null){  
+            return multiUsers.size();  
+		}  
+        return 0;  
+	}  
+  
+    //Xác định loại type  
+	@Override  
+	public int getItemViewType(int position) {  
+        MultiUser multiUser = multiUsers.get(position);  
+		if (multiUser.isFeature()){  
+            return TYPE_FEATURE;  
+		} else {  
+            return TYPE_NORMAL;  
+		}  
+	  }  
+  
+    //Tạo ra các class  
+  public class MultiUserFeatureHolder extends RecyclerView.ViewHolder{  
+  
+        TextView tvNameFeature;  
+		ImageView imgFeature;  
+		public MultiUserFeatureHolder(@NonNull View itemView) {  
+            super(itemView);  
+			tvNameFeature = itemView.findViewById(R.id.tv_feature);  
+			imgFeature = itemView.findViewById(R.id.img_feature);  
+		}  
+    }  
+  
+    public class MultiUserNormalHolder extends RecyclerView.ViewHolder{  
+  
+        TextView tvNameNormal;  
+		ImageView imgNormal;  
+		public MultiUserNormalHolder(@NonNull View itemView) {  
+            super(itemView);  
+  
+			tvNameNormal = itemView.findViewById(R.id.tv_normal);  
+			imgNormal = itemView.findViewById(R.id.img_normal);  
+		}  
+    }  
 }
 ``` 
 
@@ -384,8 +384,218 @@ public class MultiUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 > Việc khai báo, ánh xạ và sử dụng bên `MainActivity` hoàn toàn giống như các phần trước, tuy nhiên `LinearLayoutManager layoutManager = new LinearLayoutManager(this);` chỉ cần truyền vào context mà không cần truyền các thuộc tính lướt ngang hoặc dọc.
 
 
-Note: Để tạo đường kẻ giữa các item thì ta có thể add vào recyvleview như sau:
-```java
-DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(<this/context>,layoutManager.<VERTICAL/HOZONTAL>);
-recyclerView.addItemDecoration(dividerItemDecoration);
+<a name="muc5"></a>
+## 5. Load More trong Recycleview (Kotlin).
+Đầu tiên ta custom 2 layout:
+- Layout cho item ví dụ `item_details.xml`:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="itemInfo"
+            type="vn.com.unit.vinbus.model.DetailMonthCard" />
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:padding="8dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@{itemInfo.title}"
+                    android:textSize="20sp"
+                    android:textColor="@color/main_blue_100"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/opensans_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="@{itemInfo.value}"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/opensans_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</layout>
 ```
+- Một layout cho progress bar load `item_progress.xml`:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+    </data>
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/progress_holder"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+</layout>
+```
+Tiếp theo ta khởi tạo Adapter `ListInfoAdapter.kt`:
+```kotlin
+class ListInfoAdapter(var list: MutableList<DetailMonthCard>, val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    companion object{
+        const val ITEM_TYPE = 1
+        const val ITEM_PROGRESS = 2
+    }
+    var isLoading = false
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        if (ITEM_TYPE==viewType){
+            return ViewHolder(ItemListInfoDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        } else {
+            return LoadingHolder(ItemLoadingBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder.itemViewType== ITEM_TYPE) {
+            var viewHolder: ViewHolder = holder as ViewHolder
+            viewHolder.binData(list[position], onItemClickListener)
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        if (list!=null && position==list.size-1 && isLoading){
+            return ITEM_PROGRESS
+        }
+        return ITEM_TYPE
+    }
+
+    class ViewHolder(var binding: ItemListInfoDetailsBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun binData(value: DetailMonthCard, onItemClickListener: OnItemClickListener) {
+            binding.apply {
+                setVariable(BR.itemInfo, value)
+                executePendingBindings()
+            }
+            binding.cardView.setOnClickListener {
+                onItemClickListener.clickItemInfo(value)
+            }
+
+        }
+    }
+    class LoadingHolder(var binding: ItemLoadingBinding):RecyclerView.ViewHolder(binding.root){
+
+    }
+
+    fun setNewData(newItems: MutableList<DetailMonthCard>) {
+        this.list = newItems
+        notifyDataSetChanged()
+    }
+
+    interface OnItemClickListener{
+        fun clickItemInfo(item: DetailMonthCard)
+    }
+
+    fun addFooterLoading(){
+        isLoading = true
+        list.add(DetailMonthCard("","","",""))
+    }
+    fun removeFooter(){
+        isLoading = false
+        val position = list.size-1
+        if (list[position] != null){
+            list.removeAt(position)
+            notifyItemRemoved(position)
+        }
+    }
+}
+```
+> 1. Chú ý các type đặc biệt, chúng ta có **2 class ViewHolder** và các function đặc biệt *addFooterLoading()* và *removeFooter()* cần thêm vào.
+> 2. Đặc biệt còn có fun **getItemViewType()** phải overrider lại.
+> 3. Hoàn toàn giống với recycleview ở phần 4.
+
+Chúng ta cần thêm một abstract class `LoadMoreScrollListener` như sau để xử lí việc phân trang:
+```kotlin
+abstract class LoadMoreScrollListener(var linearLayoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener(){
+    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+        var visibleItemCount = linearLayoutManager.childCount
+        var totalItemCount = linearLayoutManager.itemCount
+        var firstItemVisible = linearLayoutManager.findFirstVisibleItemPosition()
+
+        if (isLoading()||isLastPage()){
+            return
+        }
+        if (firstItemVisible>=0 && (visibleItemCount+firstItemVisible)>=totalItemCount){
+            loadMoreItem()
+        }
+    }
+    abstract fun loadMoreItem()
+    abstract fun isLoading():Boolean
+    abstract fun isLastPage():Boolean
+}
+``` 
+
+Trong activity hay fragment sau khi khai báo ánh xạ recycleview thì ta tiến hành addOnScrollListener cho recycleview:
+```kotlin
+viewDataBinding?.rcvListInfo?.addOnScrollListener(object : LoadMoreScrollListener(linearLayoutManager){
+            override fun loadMoreItem() {
+                isLoading = true
+                currentPage +=1
+                loadNextPage()
+            }
+
+            override fun isLoading(): Boolean {
+                return isLoading
+            }
+
+            override fun isLastPage(): Boolean {
+                return false
+            }
+        })
+```
+-  Các biến sử dụng là:
+```kotlin
+    var isLoading = false
+    var isLastPage = false
+    var currentPage = 1
+    fun loadNextPage(){
+        Handler().postDelayed(object : Runnable{
+            override fun run() {
+                adapterList.removeFooter()
+                random10Data()
+                isLoading = false
+                if (currentPage<50){
+                    adapterList.addFooterLoading()
+                } else {
+                    isLastPage = true
+                }
+            }
+        },2000)
+
+    }
+```
+> - Nếu thời gian load lâu như load từ internet hay database có thể cẩn nhắc xoá handler.
+> - currentPage<50: là số lần load more, 50 tuỳ thuộc vào data mà có thể thay đổi, đây gán cứng để ví dụ.
