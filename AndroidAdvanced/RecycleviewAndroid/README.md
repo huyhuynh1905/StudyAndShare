@@ -599,3 +599,18 @@ viewDataBinding?.rcvListInfo?.addOnScrollListener(object : LoadMoreScrollListene
 ```
 > - Nếu thời gian load lâu như load từ internet hay database có thể cẩn nhắc xoá handler.
 > - currentPage<50: là số lần load more, 50 tuỳ thuộc vào data mà có thể thay đổi, đây gán cứng để ví dụ.
+
+
+### Ngoài ra:
+Bạn có thể set Animation cho Recycleview bằng thuộc tính:
+```xml
+android:layoutAnimation="@anim/layout_animation"
+```
+Với nội dung của `layout_animation.xml` trong res *anim* là:
+```xml
+<?xml version="1.0" encoding="utf-8"?>  
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"  
+  android:animation="@anim/item_animation_fall_down"  
+  android:animationOrder="normal"  
+  android:delay="15%" />
+```
