@@ -614,3 +614,33 @@ Với nội dung của `layout_animation.xml` trong res *anim* là:
   android:animationOrder="normal"  
   android:delay="15%" />
 ```
+Trong đó thì `item_animation_fall_down.xml` là:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="500">
+
+    <translate
+        android:fromYDelta="-20%"
+        android:toYDelta="0"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        />
+
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        />
+
+    <scale
+        android:fromXScale="105%"
+        android:fromYScale="105%"
+        android:toXScale="100%"
+        android:toYScale="100%"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        />
+
+</set>
+```
