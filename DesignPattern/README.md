@@ -11,4 +11,5 @@ Trong Design Pattern có 3 nhóm bao gồm:
 ### Danh sách các bài:
 1. [Strategy Pattern - Mẫu chiến lược](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DesignPattern/StrategyPattern)
 2. [Observer Pattern - Người quan sát](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DesignPattern/ObserverPattern)
-3. [Decorator - Mẫu trang trí](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DesignPattern/DecoratorPattern)
+3. [Decorator Pattern - Mẫu trang trí](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DesignPattern/DecoratorPattern)
+4. [Factory Pattern Và Abstract Factory Pattern](https://github.com/huyhuynh1905/StudyAndShare/tree/master/DesignPattern/FactoryPattern)
