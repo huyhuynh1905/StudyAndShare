@@ -145,7 +145,7 @@ public class TestMain {
 **Ví dụ:** Tiếp tục ví dụ ở phần 1. Chúng ta cần đảm bảo các cửa hàng nhượng quyền ở Hà Nội và Sài Gòn sử dụng các thành phần nguyên liệu chất lượng theo chính công thức của Cửa hàng. Mỗi thành phố có một bộ nguyên liệu khác nhau để dùng cho cửa hàng tại đó.
 Nhớ lại ở phần 1, nguyên liệu được tạo ra trong abstract class `Pizza`, các lớp con kế thừa từ `Pizza` tuỳ ý chỉnh nguyên liệu. Vấn đề đặt ra ở đây là lớp cha `Pizza` muốn quản lí quá trình tạo nguyên liệu luôn, vì vậy mà bước tạo nguyên liệu tách ra thành 1 factory `PizzaIngredientFactory` đảm bảo rằng các lớp con tạo nguyên liệu bằng cách dùng factory mà lớp cha cung cấp. Nào chúng ta bắt đầu:
 1. Sửa lại các class với cấu trúc như sau:
-<div align="center"><img  src="https://i.imgur.com/BrlKos7.png"/></div>
+<div align="center"><img  src="https://github.com/huyhuynh1905/StudyAndShare/blob/master/DesignPattern/FactoryPattern/src/main/resources/cautruc.PNG"/></div>
 
 > Giải thích: Ta có các class `ThickCrusDough`, `ThinCrusDough` extends từ abstract class `AbsDough`. Tương tự class `BrusSauce`, `TomatoSauce` extends từ abstract class `AbsSauce`.
 
