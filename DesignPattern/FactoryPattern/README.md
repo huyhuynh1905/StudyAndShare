@@ -5,6 +5,7 @@ Khi sử dụng **_new_**, bạn chắc chắn đang tạo một object của l�
 ### Nội dung
 1. [***Factory Method.***](#muc1) 
 2. [***Factory Pattern.***](#muc2)
+3. [***Tóm tắt.***](#muc3)
 
 
 <a name="muc1"></a>
@@ -130,4 +131,118 @@ public class TestMain {
  
 <a name="muc2"></a>
 ## 2. Factory Pattern.
+**Định nghĩa chính thức**: **Factory Pattern** xác định một interface để tạo một đối tượng, nhưng cho phép các lớp con quyết định lớp nào sẽ khởi tạo. Factory Pattern giao việc khởi tạo đối tượng cụ thể cho lớp con.
+**Lợi ích**: Bằng cách đặt tất cả code tạo đối tượng của mình vào một object hoặc phương thức, chúng ta tránh trùng lặp code của mình và cung cấp một nơi để thực hiện bảo trì. Điều đó có nghĩa là các client chỉ phụ thuộc vào các interface thay vì các lớp cụ thể để khởi tạo đối tượng. => Cho phép chúng ta lập trình trên một giao diện (interface), không phải là lặp trình trên một triển khai (implementation) => làm cho code linh hoạt, dễ mở rộng trong tương lai.
 
+**Nguyên tắc nghịch đảo  phụ thuộc (Dependency Inversion - DI)**: Kiểu trừu tượng không nên phụ thuộc vào kiểu chi tiết. Ngược lại kiểu chi tiết nên phụ thuộc kiểu trừu tượng.
+> + Nghe có vẻ giống với "Lập trình trên một giao diện, không phải là triển khai". Tuy nhiên thì nguyên tắc này đưa ra tuyên bố mạnh mẽ hơn, nó cho thấy rằng **các thành phần cấp cao không nên phụ thuộc vào các thành phần cấp thấp, thay vào đó thì cả 2 nên phụ thuộc vào trừu tượng.** - hơi lú tí nhưng mà kiểu như có một trừu tượng ở giữa các thành phần cấp cao và các thành phần cấp thấp vậy.
+> + Gọi là nguyên tắc "sự đảo ngược" vì nó đảo ngược cách thường nghĩ về thiết kế OO.
+
+**Một vài hướng dẫn để giúp làm theo nguyên tắc này:**(Đây là hướng dẫn cố gắng thực hiện, hơn là một nguyên tắc tuân thủ thực hiện - Vd: Các lớp không có khả năng thay đổi thì không vấn đề gì khi tạo một đối tượng cụ thể)
+- Không có biến giữ một tham chiếu đến lớp cụ thể (như khi sử dụng `new` ).
+- Không có lớp xuất phát từ một lớp cụ thể (như vậy sẽ khiến phụ thuộc vào một lớp cụ thể).
+
+**Ví dụ:** Tiếp tục ví dụ ở phần 1. Chúng ta cần đảm bảo các cửa hàng nhượng quyền ở Hà Nội và Sài Gòn sử dụng các thành phần nguyên liệu chất lượng theo chính công thức của Cửa hàng. Mỗi thành phố có một bộ nguyên liệu khác nhau để dùng cho cửa hàng tại đó.
+Nhớ lại ở phần 1, nguyên liệu được tạo ra trong abstract class `Pizza`, các lớp con kế thừa từ `Pizza` tuỳ ý chỉnh nguyên liệu. Vấn đề đặt ra ở đây là lớp cha `Pizza` muốn quản lí quá trình tạo nguyên liệu luôn, vì vậy mà bước tạo nguyên liệu tách ra thành 1 factory `PizzaIngredientFactory` đảm bảo rằng các lớp con tạo nguyên liệu bằng cách dùng factory mà lớp cha cung cấp. Nào chúng ta bắt đầu:
+1. Sửa lại các class với cấu trúc như sau:
+<div align="center"><img  src="https://i.imgur.com/BrlKos7.png"/></div>
+
+> Giải thích: Ta có các class `ThickCrusDough`, `ThinCrusDough` extends từ abstract class `AbsDough`. Tương tự class `BrusSauce`, `TomatoSauce` extends từ abstract class `AbsSauce`.
+
+2. Sửa lại class abstract `AbsPizza` khác với `Pizza` ở phần 1.
+```java
+public abstract class AbsPizza {
+    String name;
+    AbsDough dough;
+    AbsSauce sauce;
+
+    abstract void prepare();
+
+    void bake(){
+        System.out.println("Bake the pizza");
+    }
+    void cut(){
+        System.out.println("Cutting the pizza");
+    }
+    void box(){
+        System.out.println("Box the pizza");
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+}
+```
+3. Các class `CheesePizza` và `ClamPizza` extends từ abstract class `AbsPizza` . Ngoài ra có kết hợp một biến interface `PizzaIngredientFactory` như sau: 
+```java
+public class CheesePizza extends AbsPizza {
+    PizzaIngredientFactory ingredientFactory;
+
+    public CheesePizza(PizzaIngredientFactory ingredientFactory) {
+        this.ingredientFactory = ingredientFactory;
+    }
+
+    @Override
+    void prepare() {
+        System.out.println("Preparing "+name);
+        dough = ingredientFactory.createDough();
+        sauce = ingredientFactory.createSauce();
+    }
+}
+```
+Đơn nhiên phải tạo các class `HNPizzaIngredientFactory` và `SGPizzaIngredientFactory` implement interface `PizzaIngredientFactory` chính là các nguyên liệu được sản xuất tại SG hay HN cho pizza:
+```java
+public class HNPizzaIngredientFactory implements PizzaIngredientFactory {
+    @Override
+    public AbsDough createDough() {
+        return new ThinCrusDough();
+    }
+
+    @Override
+    public AbsSauce createSauce() {
+        return new BrusSauce();
+    }
+}
+```
+4. Cuối cùng là class `HNPizzaStore`:
+```java
+public class HNPizzaStore extends AbsPizzaStore {
+    @Override
+    protected AbsPizza createPizza(String nameOfPizza) {
+        AbsPizza pizza = null;
+        PizzaIngredientFactory ingredientFactory = new HNPizzaIngredientFactory();
+        if (nameOfPizza.equals("Cheese")){
+            pizza = new CheesePizza(ingredientFactory);
+            pizza.setName("HN Cheese Pizza");
+        }
+        if (nameOfPizza.equals("Clam")){
+            pizza = new CheesePizza(ingredientFactory);
+            pizza.setName("HN Clam Pizza");
+        }
+
+        return pizza;
+    }
+}
+```
+> **Abstract Factory Pattern:** cung cấp cho chúng ta một giao diện để tạo một "bộ sản phẩm". Bằng cách này chúng ta có thể tách code khỏi factory thực tế tạo các sản phẩm.
+
+**Định nghĩa Abstract Factory Pattern:** cung cấp một interface có chức năng tạo một tập hợp các đối tượng liên quan phụ thuộc lẫn nhau mà không chỉ ra đó là những lớp cụ thể nào tại thời điểm thiết kế.
+
+**So sánh giữa Factory Method và Abstract Factory:**
+- Cả 2 đều tạo ra các đối tượng.
+- **Factory Method:** Tạo ra đối tượng thông qua thừa kế (muốn tạo ra đối tượng cần phải extends từ một lớp và override lại phương thức factory). => Giúp chương trình độc lập với kiểu (type) cụ thể.
+- **Abstract Factory:** Tạo ra đối tượng thông qua kết hợp (composition) đối tượng. Các lớp con của kiểu trừu tượng sẽ xác định cách thức các sản phẩm đó được tạo ra. => Giống Factpry Method những nơi sử dụng factory của Abstract Factory sẽ hoàn toàn độc lập với những products cụ thể.
+
+<a name="muc3"></a>
+## 3. Tóm tắt lại nội dung.
+- Tất cả các factory đóng gói việc tạo ra đối tượng.
+- **Simple Factory** không phải là một mẫu thiết kế thực sự, nó chỉ là một các đơn giản để tách client code của bạn khỏi concreted class.
+- **Factory Method** dựa vào sự thừa kế: việc tạo đối tượng được uỷ quyền cho các lớp con thực hiện phương thức Factory để tạo đối tượng.
+- **Abstract Factory** dựa vào kết hợp đối tượng: việc tạo đối tượng được thực hiện theo các phương thức được hiển thị trong interface của factory.
+-   Tất cả các mẫu Factory thúc đẩy đạt tới “khớp nối lỏng lẻo” bằng cách giảm sự phụ thuộc của ứng dụng của bạn vào các lớp cụ thể.
+-   Mục đích của **Factory Method**  là cho phép một lớp trì hoãn việc khởi tạo đối với các lớp con của nó.
+-   Mục đích của  **Abstract Factory**  là tạo ra một bộ của các đối tượng liên quan mà không phải phụ thuộc vào các lớp cụ thể của chúng.
+-   Nguyên tắc nghịch đảo phụ thuộc hướng dẫn chúng ta tránh phụ thuộc vào các loại cụ thể và cố gắng trừu tượng hóa.
+-   **Factory** là một kỹ thuật mạnh mẽ để đạt tới trình độ “**_coding to abstractions_**”, không phải là “**_coding to concrete_**” nữa.
