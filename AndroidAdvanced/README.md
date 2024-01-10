@@ -66,4 +66,39 @@ private void checkAndRequestPermissions() {
 - Quyền internet: 
 	```
 	<uses-permission android:name="android.permission.INTERNET" />
-	
+
+
+
+### Code Example Android:
+***1. Lấy All FontName của thiết bị:***
+```kotlin
+//kotlin
+private fun getAllFontName() {
+        val temp = File("/system/fonts/")
+        val fontSuffix = ".ttf"
+
+        for (font in temp.listFiles()) {
+            val fontName: String = font.name
+            if (fontName.endsWith(fontSuffix)) {
+                Utils.log("getAllFontName","getAllFontName: ${fontName.subSequence(0, fontName.lastIndexOf(fontSuffix))}$fontSuffix")
+            }
+        }
+}
+
+//java
+ArrayList<String> fontNames = new ArrayList<String>();
+File temp = new File("/system/fonts/");
+String fontSuffix = ".ttf";
+
+for(File font : temp.listFiles()) {
+    String fontName = font.getName();
+    if(fontName.endsWith(fontSuffix)) {
+        fontNames.add(fontName.subSequence(0,fontName.lastIndexOf(fontSuffix)).toString());
+    }
+}
+
+//dùng:
+TextView lblexample = (TextView) findViewById(R.id.lblexample);
+lblexample.setTypeface(Typeface.createFromFile("/system/fonts/" + "fontsname" + ".ttf"));
+```
+
